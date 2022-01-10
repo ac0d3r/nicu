@@ -4,10 +4,11 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"net"
 	"net/http"
 	"reflect"
 	"strings"
+
+	"github.com/Buzz2d0/nicu/pkg/network"
 )
 
 var (
@@ -16,6 +17,17 @@ var (
 	flagDir  = flag.String("d", "./", "load directory")
 	flagFile = flag.String("f", "", "load single file")
 )
+
+func banner() {
+	t := `
+   __   __  __                                 
+  / /  / /_/ /____    ___ ___ _____  _____ ____
+ / _ \/ __/ __/ _ \_ (_-</ -_) __/ |/ / -_) __/
+/_//_/\__/\__/ .__(_)___/\__/_/  |___/\__/_/   
+            /_/                                
+`
+	fmt.Println(t)
+}
 
 func getStatusCode(w http.ResponseWriter) int64 {
 	respValue := reflect.ValueOf(w)
@@ -34,6 +46,7 @@ func withlog(h http.Handler) http.HandlerFunc {
 }
 
 func main() {
+	banner()
 	flag.Parse()
 	if *flagHelp {
 		fmt.Printf("Usage: http.server [options]\n\n")
@@ -43,8 +56,8 @@ func main() {
 
 	if len(strings.Split(*flagHost, ":")[0]) == 0 {
 		fmt.Printf("listen on http://localhost%s\n", *flagHost)
-		if ip, err := getLocalIpV4(); err == nil && ip != "" {
-			fmt.Printf("listen on http://%s%s\n", ip, *flagHost)
+		if ipnets, err := network.GetLocalIPV4Net(); err == nil && len(ipnets) >= 1 {
+			fmt.Printf("listen on http://%s%s\n", ipnets[0].IP, *flagHost)
 		}
 	} else {
 		fmt.Printf("listen on http://%s\n", *flagHost)
@@ -63,27 +76,4 @@ func main() {
 	}
 
 	log.Fatal(http.ListenAndServe(*flagHost, withlog(handler)))
-}
-
-func getLocalIpV4() (string, error) {
-	inters, err := net.Interfaces()
-	if err != nil {
-		return "", err
-	}
-	for _, inter := range inters {
-		if inter.Flags&net.FlagUp != 0 && !strings.HasPrefix(inter.Name, "lo") {
-			addrs, err := inter.Addrs()
-			if err != nil {
-				continue
-			}
-			for _, addr := range addrs {
-				if ipnet, ok := addr.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
-					if ipnet.IP.To4() != nil {
-						return ipnet.IP.String(), nil
-					}
-				}
-			}
-		}
-	}
-	return "", nil
 }
