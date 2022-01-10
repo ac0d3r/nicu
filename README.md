@@ -11,7 +11,7 @@
 ## pingx
 
 - install: `go install github.com/Buzz2d0/nicu/cmd/pingx`
-- description: 利用icmp协议检测当前主机网络下的存活主机（鸡肋的快速实现，所以没有状态标识，需要手动停止`ctrl-c`）
+- description: 利用icmp协议检测当前网络下的存活主机（鸡肋实现，没有状态标识，需要手动停止`ctrl-c`）
 - usage: `pingx` 直接运行
 
 ![image](https://user-images.githubusercontent.com/26270009/148733800-b175ebbc-14eb-40d1-b5c9-937bd1780c1f.png)
