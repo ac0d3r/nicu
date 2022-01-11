@@ -15,3 +15,11 @@
 - usage: `pingx` 直接运行
 
 ![image](https://user-images.githubusercontent.com/26270009/148733800-b175ebbc-14eb-40d1-b5c9-937bd1780c1f.png)
+
+## gif2img
+
+- install: `go install github.com/Buzz2d0/nicu/cmd/gif2img`
+- description: 分解 GIF 文件
+- usage: `gif2img -f example.gif`
+
+![image](https://user-images.githubusercontent.com/26270009/148906590-134c03da-9b52-4a13-927e-532fc2575a16.png)
