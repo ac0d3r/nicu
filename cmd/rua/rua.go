@@ -4,6 +4,7 @@ package main
 
 import (
 	"bytes"
+	"errors"
 	"flag"
 	"fmt"
 	"image"
@@ -11,6 +12,7 @@ import (
 	"image/color/palette"
 	"image/draw"
 	"image/gif"
+	"image/jpeg"
 	"image/png"
 	"log"
 	"os"
@@ -88,7 +90,14 @@ func ruax(pfn string) error {
 		return err
 	}
 	defer profilef.Close()
-	profileImg, err := png.Decode(profilef)
+	var profileImg image.Image
+	if strings.HasSuffix(pfn, ".png") {
+		profileImg, err = png.Decode(profilef)
+	} else if strings.HasSuffix(pfn, ".jpg") || strings.HasSuffix(pfn, ".jpeg") {
+		profileImg, err = jpeg.Decode(profilef)
+	} else {
+		return errors.New("picture type is not supported")
+	}
 	if err != nil {
 		return err
 	}
