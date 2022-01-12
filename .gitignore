@@ -19,3 +19,8 @@ dump.rdb
 .DS_Store
 
 # developemnt
+*.jpg
+*.png
+*.gif
+!template.gif
+!zznq.gif

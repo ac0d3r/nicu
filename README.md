@@ -23,3 +23,14 @@
 - usage: `gif2img -f example.gif`
 
 ![image](https://user-images.githubusercontent.com/26270009/148906590-134c03da-9b52-4a13-927e-532fc2575a16.png)
+
+## rua
+
+- install: `go install github.com/Buzz2d0/nicu/cmd/rua`
+- description: 生成 rua.gif
+- usage: `rua -h`
+
+![image](https://user-images.githubusercontent.com/26270009/149051175-eaf26f54-6d72-4996-9429-0bc73564ef4c.png)
+
+example:
+![image](./cmd/rua/zznq.gif)
