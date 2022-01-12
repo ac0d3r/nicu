@@ -30,7 +30,7 @@
 - description: 生成 rua.gif
 - usage: `rua -h`
 
-![image](https://user-images.githubusercontent.com/26270009/149051175-eaf26f54-6d72-4996-9429-0bc73564ef4c.png)
+![image](https://user-images.githubusercontent.com/26270009/149051458-5122bae7-8e7f-4b36-a081-c138f88a966f.png)
 
 example:
-![image](./cmd/rua/zznq.gif)
+![zznq](https://user-images.githubusercontent.com/26270009/149051761-21e0e181-534d-458a-ad63-5c8963eda447.gif)
