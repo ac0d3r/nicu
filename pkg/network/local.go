@@ -28,26 +28,3 @@ func GetLocalIPV4Net() ([]net.IPNet, error) {
 	}
 	return ipnets, err
 }
-
-// IPRange calculate the start and end IP addresses according to the subnet mask
-// thx: https://github.com/shadow1ng/fscan/blob/main/common/ParseIP.go
-func IPRange(c net.IPNet) (net.IP, net.IP) {
-	var (
-		start, end net.IP
-		ipIdx      int
-		mask       byte
-	)
-	start = make(net.IP, len(c.IP))
-	end = make(net.IP, len(c.IP))
-	copy(start, c.IP)
-	copy(end, c.IP)
-
-	for i := 0; i < len(c.Mask); i++ {
-		ipIdx = len(end) - 1 - i
-		mask = c.Mask[len(c.Mask)-i-1]
-		end[ipIdx] = c.IP[ipIdx] | ^mask
-		start[ipIdx] = c.IP[ipIdx] & mask
-	}
-
-	return start, end
-}
