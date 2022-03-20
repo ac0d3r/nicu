@@ -35,6 +35,6 @@ Example:
 
 <img src="https://user-images.githubusercontent.com/26270009/159157614-6956f5e2-7b35-4db7-bd5c-ee7ae4a5d635.png" width="250" align="right">
 
-- install: `go install github.com/Buzz2d0/nicu/pingx/pingx@latest`
+- install: `go install github.com/Buzz2d0/nicu/cmd/pingx@latest`
 - description: 利用 ICMP 协议发现当前网络的主机
 - usage: `sudo pingx`
