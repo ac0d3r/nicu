@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/Buzz2d0/nicu/pkg/network"
+	"github.com/ac0d3r/nicu/pkg/network"
 )
 
 var (

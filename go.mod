@@ -1,4 +1,4 @@
-module github.com/Buzz2d0/nicu
+module github.com/ac0d3r/nicu
 
 go 1.18
 

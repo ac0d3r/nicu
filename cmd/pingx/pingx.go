@@ -6,8 +6,8 @@ import (
 	"log"
 	"strconv"
 
-	"github.com/Buzz2d0/nicu/pkg/network"
-	"github.com/Buzz2d0/nicu/pkg/pingx"
+	"github.com/ac0d3r/nicu/pkg/network"
+	"github.com/ac0d3r/nicu/pkg/pingx"
 )
 
 func banner() {
